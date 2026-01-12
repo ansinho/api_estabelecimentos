@@ -117,8 +117,8 @@ E a spec OpenAPI em JSON em:
 - GET /estabelecimentos/{id}
   - Buscar por UUID
 
-- GET /estabelecimentos/{cnpj}
-  - Buscar por CNPJ (atenção: ambos endpoints usam path variável — use com cuidado)
+- GET /estabelecimentos/cnpj/{cnpj}
+  - Buscar por CNPJ
 
 - PUT /estabelecimentos/{id}
   - Atualizar por ID
