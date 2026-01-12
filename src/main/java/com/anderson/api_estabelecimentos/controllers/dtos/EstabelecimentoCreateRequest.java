@@ -14,7 +14,8 @@ public record EstabelecimentoCreateRequest(
         @Schema(example = "Meu Bar em Brasília")
         String nome,
         
-        @NotBlank @Size(min = 14, max = 14) @CNPJ(message = "CNPJ inválido")
+        @NotBlank
+        @CNPJ(message = "CNPJ inválido")
         @Schema(example = "12345678000199")
         String cnpj,
         

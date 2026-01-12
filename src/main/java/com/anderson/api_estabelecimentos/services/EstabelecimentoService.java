@@ -37,7 +37,9 @@ public class EstabelecimentoService {
         }
 
         public EstabelecimentoResponse criar(EstabelecimentoCreateRequest request) {
-                repository.findByCnpj(request.cnpj())
+                String cnpjNormalizado = normalizarCnpj(request.cnpj());
+
+                repository.findByCnpj(cnpjNormalizado)
                                 .ifPresent(est -> {
                                         throw new BusinessException(
                                                         "Já existe um estabelecimento com o CNPJ informado");
@@ -48,13 +50,17 @@ public class EstabelecimentoService {
 
                 Estabelecimento estabelecimento = Estabelecimento.builder()
                                 .nome(request.nome())
-                                .cnpj(request.cnpj())
+                                .cnpj(cnpjNormalizado)
                                 .tipoEstabelecimento(buscarTipoPorCodigo(request.codigoTipo()))
                                 .geom(geom)
                                 .build();
 
                 repository.save(estabelecimento);
                 return EstabelecimentoResponse.fromEntity(estabelecimento);
+        }
+
+        private String normalizarCnpj(String cnpj) {
+                return cnpj.replaceAll("\\D", "");
         }
 
         private TipoEstabelecimento buscarTipoPorCodigo(String codigo) {
@@ -73,11 +79,14 @@ public class EstabelecimentoService {
                                                                 "nome", entity.getNome(),
                                                                 "cnpj", entity.getCnpj(),
                                                                 "tipo", Map.of(
-                                                                                "id", entity.getTipoEstabelecimento().getId(),
+                                                                                "id",
+                                                                                entity.getTipoEstabelecimento().getId(),
                                                                                 "codigo",
-                                                                                entity.getTipoEstabelecimento().getCodigo(),
+                                                                                entity.getTipoEstabelecimento()
+                                                                                                .getCodigo(),
                                                                                 "descricao",
-                                                                                entity.getTipoEstabelecimento().getDescricao())),
+                                                                                entity.getTipoEstabelecimento()
+                                                                                                .getDescricao())),
                                                 GeoPointResponse.fromPoint(entity.getGeom())))
                                 .toList();
                 return new FeatureCollectionGeoJSON("FeatureCollection", features);
@@ -97,9 +106,11 @@ public class EstabelecimentoService {
         }
 
         public EstabelecimentoResponse buscarPorCnpj(String cnpj) {
-                Estabelecimento estabelecimento = repository.findByCnpj(cnpj)
+                String cnpjNormalizado = normalizarCnpj(cnpj);
+
+                Estabelecimento estabelecimento = repository.findByCnpj(cnpjNormalizado)
                                 .orElseThrow(() -> new ResourceNotFoundException("Estabelecimento não encontrado",
-                                                cnpj));
+                                                cnpjNormalizado));
 
                 return EstabelecimentoResponse.fromEntity(estabelecimento);
         }
