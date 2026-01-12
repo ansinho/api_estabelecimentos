@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anderson.api_estabelecimentos.controllers.dtos.EstabelecimentoCreateRequest;
+import com.anderson.api_estabelecimentos.controllers.dtos.EstabelecimentoListagemResponse;
 import com.anderson.api_estabelecimentos.controllers.dtos.EstabelecimentoResponse;
 import com.anderson.api_estabelecimentos.controllers.dtos.EstabelecimentoUpdateRequest;
+import com.anderson.api_estabelecimentos.controllers.dtos.FeatureCollectionGeoJSON;
 import com.anderson.api_estabelecimentos.services.EstabelecimentoService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,9 +42,15 @@ public class EstabelecimentoController {
         return service.criar(request);
     }
 
+    @Operation(summary = "Listar feature collection geoJSON dos estabelecimentos")
+    @GetMapping("/geometrias")
+    public FeatureCollectionGeoJSON listarGeometrias() {
+        return service.listarGeometria();
+    }
+
     @Operation(summary = "Listar todos os estabelecimentos")
     @GetMapping
-    public List<EstabelecimentoResponse> listar() {
+    public List<EstabelecimentoListagemResponse> listar() {
         return service.listar();
     }
 
