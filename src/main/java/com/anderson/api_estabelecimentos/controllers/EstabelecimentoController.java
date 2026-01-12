@@ -62,7 +62,7 @@ public class EstabelecimentoController {
     }
 
     @Operation(summary = "Buscar estabelecimento por cnpj")
-    @GetMapping("/{cnpj}")
+    @GetMapping("/cnpj/{cnpj}")
     public EstabelecimentoResponse buscarPorCnpj(
             @PathVariable String cnpj) {
         return service.buscarPorCnpj(cnpj);
