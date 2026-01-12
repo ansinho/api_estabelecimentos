@@ -1,4 +1,4 @@
-# api_estabelecimentos
+# API Cadastro de estabelecimento ⚡
 
 API REST simples para gerenciar estabelecimentos e seus tipos, com suporte a geometrias (PostGIS), documentação OpenAPI e exemplos de seed.
 
