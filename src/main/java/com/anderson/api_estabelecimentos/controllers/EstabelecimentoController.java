@@ -68,7 +68,7 @@ public class EstabelecimentoController {
         return service.buscarPorCnpj(cnpj);
     }
 
-    @Operation(summary = "Atualizar  de estabelecimento por id")
+    @Operation(summary = "Atualizar estabelecimento por id")
     @PutMapping("/{id}")
     public EstabelecimentoResponse atualizar(
             @PathVariable UUID id,
