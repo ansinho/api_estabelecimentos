@@ -18,7 +18,7 @@ public record EstabelecimentoResponse(
                 entity.getId(),
                 entity.getNome(),
                 entity.getCnpj(),
-                TipoEstabelecimentoResponse.fromEntity(entity.getTipoCodigo()),
+                TipoEstabelecimentoResponse.fromEntity(entity.getTipoEstabelecimento()),
                 GeoPointResponse.fromPoint(entity.getGeom()));
     }
 

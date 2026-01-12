@@ -39,18 +39,18 @@ public class Estabelecimento {
     private String cnpj;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "tipo_codigo")
-    private TipoEstabelecimento tipoCodigo;
+@JoinColumn(name = "tipo_codigo", referencedColumnName = "codigo")
+private TipoEstabelecimento tipoEstabelecimento;
 
     @Column(nullable = false, columnDefinition = "geometry(Point, 4326)")
     private Point geom;
 
-    public void atualizar(String nome, String tipoCodigo, Point geom) {
+    public void atualizar(String nome, TipoEstabelecimento tipoEstabelecimento, Point geom) {
         if (nome != null && !nome.isBlank()) {
             this.nome = nome;
         }
-        if (tipoCodigo != null) {
-            this.tipoCodigo = TipoEstabelecimento.builder().codigo(tipoCodigo).build();
+        if (tipoEstabelecimento != null) {
+            this.tipoEstabelecimento = tipoEstabelecimento;
         }
         if (geom != null) {
             this.geom = geom;

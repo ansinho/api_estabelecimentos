@@ -49,7 +49,7 @@ public class EstabelecimentoService {
                 Estabelecimento estabelecimento = Estabelecimento.builder()
                                 .nome(request.nome())
                                 .cnpj(request.cnpj())
-                                .tipoCodigo(buscarTipoPorCodigo(request.codigoTipo()))
+                                .tipoEstabelecimento(buscarTipoPorCodigo(request.codigoTipo()))
                                 .geom(geom)
                                 .build();
 
@@ -73,11 +73,11 @@ public class EstabelecimentoService {
                                                                 "nome", entity.getNome(),
                                                                 "cnpj", entity.getCnpj(),
                                                                 "tipo", Map.of(
-                                                                                "id", entity.getTipoCodigo().getId(),
+                                                                                "id", entity.getTipoEstabelecimento().getId(),
                                                                                 "codigo",
-                                                                                entity.getTipoCodigo().getCodigo(),
+                                                                                entity.getTipoEstabelecimento().getCodigo(),
                                                                                 "descricao",
-                                                                                entity.getTipoCodigo().getDescricao())),
+                                                                                entity.getTipoEstabelecimento().getDescricao())),
                                                 GeoPointResponse.fromPoint(entity.getGeom())))
                                 .toList();
                 return new FeatureCollectionGeoJSON("FeatureCollection", features);
@@ -116,7 +116,7 @@ public class EstabelecimentoService {
 
                 Estabelecimento.builder()
                                 .nome(request.nome())
-                                .tipoCodigo(buscarTipoPorCodigo(request.codigoTipo()))
+                                .tipoEstabelecimento(buscarTipoPorCodigo(request.codigoTipo()))
                                 .geom(geom)
                                 .build();
                 repository.save(estabelecimento);

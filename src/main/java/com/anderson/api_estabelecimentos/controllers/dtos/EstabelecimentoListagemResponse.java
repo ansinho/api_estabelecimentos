@@ -15,6 +15,6 @@ public record EstabelecimentoListagemResponse(
                 entity.getId(),
                 entity.getNome(),
                 entity.getCnpj(),
-                TipoEstabelecimentoResponse.fromEntity(entity.getTipoCodigo()));
+                TipoEstabelecimentoResponse.fromEntity(entity.getTipoEstabelecimento()));
     }
 }
