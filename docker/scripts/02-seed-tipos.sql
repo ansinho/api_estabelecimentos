@@ -8,5 +8,6 @@ INSERT INTO tb_tipos_estabelecimento (codigo, descricao)
 VALUES 
     ('RESTAURANTE', 'Restaurante'),
     ('BAR', 'Bar e Lanchonete'),
-    ('MERCADO', 'Mercado e Supermercado')
+    ('MERCADO', 'Mercado e Supermercado'),
+    ('FARMACIA', 'Farmácia')
 ON CONFLICT (codigo) DO NOTHING;
