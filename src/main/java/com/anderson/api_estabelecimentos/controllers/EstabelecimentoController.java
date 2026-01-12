@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,28 +57,28 @@ public class EstabelecimentoController {
     @Operation(summary = "Buscar estabelecimento por id")
     @GetMapping("/{id}")
     public EstabelecimentoResponse buscarPorId(
-            @PathVariable UUID id) {
+            @RequestParam UUID id) {
         return service.buscarPorId(id);
     }
 
     @Operation(summary = "Buscar estabelecimento por cnpj")
     @GetMapping("/cnpj/{cnpj}")
     public EstabelecimentoResponse buscarPorCnpj(
-            @PathVariable String cnpj) {
+            @RequestParam String cnpj) {
         return service.buscarPorCnpj(cnpj);
     }
 
     @Operation(summary = "Atualizar estabelecimento por id")
     @PutMapping("/{id}")
     public EstabelecimentoResponse atualizar(
-            @PathVariable UUID id,
+            @RequestParam UUID id,
             @RequestBody @Valid EstabelecimentoUpdateRequest request) {
         return service.atualizar(id, request);
     }
 
     @Operation(summary = "Remover estabelecimento por id")
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable UUID id) {
+    public void remover(@RequestParam UUID id) {
         service.remover(id);
     }
 }

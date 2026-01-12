@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,21 +48,21 @@ public class TipoEstabelecimentoController {
     @Operation(summary = "Buscar tipo de estabelecimento por código")
     @GetMapping("/{codigo}")
     public TipoEstabelecimentoResponse buscar(
-            @PathVariable String codigo) {
+            @RequestParam String codigo) {
         return service.buscarPorCodigo(codigo);
     }
 
     @Operation(summary = "Atualizar tipo de estabelecimento por código")
     @PutMapping("/{codigo}")
     public TipoEstabelecimentoResponse atualizar(
-            @PathVariable String codigo,
+            @RequestParam String codigo,
             @RequestBody @Valid TipoEstabelecimentoUpdateRequest request) {
         return service.atualizar(codigo, request);
     }
 
     @Operation(summary = "Remover tipo de estabelecimento por código")
     @DeleteMapping("/{codigo}")
-    public void remover(@PathVariable String codigo) {
+    public void remover(@RequestParam String codigo) {
         service.remover(codigo);
     }
 }
