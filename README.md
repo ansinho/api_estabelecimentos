@@ -1,13 +1,9 @@
 # API de Estabelecimentos Georreferenciados ⚡
 
-API REST simples para gerenciar estabelecimentos e seus tipos, com suporte a geometrias (PostGIS), documentação OpenAPI e exemplos de seed.
+Projeto: API REST em Spring Boot para gerenciar estabelecimentos e seus tipos, com suporte a geometrias (PostGIS), documentação OpenAPI (Swagger) e scripts de seed para facilitar testes.
 
-## � Desafio semanal
-
-**Projeto:** API REST em Spring Boot para gerenciar estabelecimentos e seus tipos, com suporte a geometrias (PostGIS), documentação OpenAPI (Swagger) e scripts de seed para facilitar testes.
-
-**Contexto:** Este repositório faz parte de um desafio semanal em Java Spring Boot — exercício para praticar conceitos de API.  
-**Desafio:** Segunda semana.
+Contexto: Este repositório faz parte de um desafio semanal em Java Spring Boot — exercício para praticar conceitos de API.
+Desafio: Segunda semana.
 
 ## �🔧 Tecnologias
 
