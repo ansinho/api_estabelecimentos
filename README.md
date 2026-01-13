@@ -5,7 +5,7 @@ Projeto: API REST em Spring Boot para gerenciar estabelecimentos e seus tipos, c
 Contexto: Este repositório faz parte de um desafio semanal em Java Spring Boot — exercício para praticar conceitos de API.
 Desafio: Segunda semana.
 
-## �🔧 Tecnologias
+## 🧩 Tecnologias
 
 - Java 21
 - Spring Boot (3.x)
